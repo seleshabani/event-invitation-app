@@ -72,6 +72,8 @@ cd guest-event
    php artisan l5-swagger:generate
    ```
 
+   l'api sera disponible sur :  `API_URL + "/documentation`
+
 1. Accédez au dossier du frontend :
    ```bash
    cd ../guest-event-ui
