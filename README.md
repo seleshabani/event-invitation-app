@@ -56,11 +56,11 @@ cd guest-event
    php artisan migrate
    ```
 
-7. Installez Laravel Passport pour l'authentification OAuth :
+7. Créez un client OAuth pour le grant password (si nécessaire) :
    ```bash
-   php artisan passport:install
+   php artisan passport:client --password
    ```
-   Cela créera les clients OAuth nécessaires (client_id et client_secret).
+   Cela créera un client_id et client_secret pour l'authentification par mot de passe. (pensez à les copier dans les deux fichiers .env front et back)
 
 8. (Optionnel) Exécutez les seeders pour ajouter des données de test :
    ```bash
