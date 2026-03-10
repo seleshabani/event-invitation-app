@@ -67,7 +67,10 @@ cd guest-event
    php artisan db:seed
    ```
 
-### 3. Configuration du Frontend
+9. Générez la documentation API avec Swagger :
+   ```bash
+   php artisan l5-swagger:generate
+   ```
 
 1. Accédez au dossier du frontend :
    ```bash
@@ -103,6 +106,7 @@ Le serveur de développement frontend sera accessible sur `http://localhost:5173
 
 - Ouvrez votre navigateur et accédez à l'URL du frontend (par exemple `http://localhost:5173`).
 - L'interface utilisateur communiquera avec l'API backend pour gérer les événements et les invités.
+- Accédez à la documentation API via Swagger UI sur `http://localhost:8000/api/documentation`.
 
 ## Exécution des Jobs et Files d'Attente
 
