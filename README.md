@@ -1,6 +1,6 @@
 # Guest Event Project
 
-Ce projet est une application full-stack composée d'un backend API Laravel (dans `guest-event-app/`) et d'une interface utilisateur frontend (dans `guest-event-ui/`) utilisant Vite et probablement React.
+Ce projet est une application full-stack composée d'un backend API Laravel (dans `guest-event-api/`) et d'une interface utilisateur frontend (dans `guest-event-front/`) utilisant Vite et probablement React.
 
 ## Prérequis
 
@@ -28,7 +28,7 @@ cd guest-event
 
 1. Accédez au dossier du backend :
    ```bash
-   cd guest-event-app
+   cd guest-event-api
    ```
 
 2. Installez les dépendances PHP :
@@ -76,7 +76,7 @@ cd guest-event
 
 1. Accédez au dossier du frontend :
    ```bash
-   cd ../guest-event-ui
+   cd ../guest-event-front
    ```
 
 2. Installez les dépendances Node.js :

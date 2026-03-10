@@ -1,0 +1,209 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Guest Event API",
+        "description": "API documentation",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/register": {
+            "post": {
+                "summary": "Register a new user",
+                "operationId": "8a56853624e025573120a09a4c75d468",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/events": {
+            "get": {
+                "summary": "Get all events for authenticated user",
+                "operationId": "7058ab7c89d20c752b6afd6d808f6526",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create a new event",
+                "operationId": "508895e03d7f10edac84357084c87b20",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EventRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/guests/upload": {
+            "post": {
+                "summary": "Upload guests for an event",
+                "operationId": "e681ff5b0bd460c829efcabce29749d5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UploadGuestRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Fichier traité avec succès"
+                    },
+                    "422": {
+                        "description": "Erreur de validation ou fichier manquant"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/": {
+            "get": {
+                "summary": "Home endpoint",
+                "operationId": "fdaae09166e5bbec7825649b696b3b08",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "EventRequest": {
+                "required": [
+                    "name",
+                    "date"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "example": "Birthday Party"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "A fun birthday party with friends and family."
+                    },
+                    "location": {
+                        "type": "string",
+                        "example": "Kinshasa"
+                    },
+                    "start_time": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2026-03-10"
+                    },
+                    "end_time": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2026-03-10"
+                    }
+                },
+                "type": "object"
+            },
+            "RegisterRequest": {
+                "required": [
+                    "name",
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "john.doe@example.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "format": "password",
+                        "example": "secret"
+                    },
+                    "password_confirmation": {
+                        "type": "string",
+                        "format": "password",
+                        "example": "secret"
+                    }
+                },
+                "type": "object"
+            },
+            "UploadGuestRequest": {
+                "required": [
+                    "event_id",
+                    "file"
+                ],
+                "properties": {
+                    "event_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "file": {
+                        "description": "The file to upload",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://guest-event-app.test/oauth/authorize",
+                        "tokenUrl": "http://guest-event-app.test/oauth/token",
+                        "refreshUrl": "http://guest-event-app.test/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    }
+}
