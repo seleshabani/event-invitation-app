@@ -19,8 +19,8 @@ class EventInvitationMail extends Mailable implements ShouldQueue
      * Create a new message instance.
      */
     public function __construct(
-        private Event $event,
-        private Guest $guest
+        public Event $event,
+        public Guest $guest
     ) {
         //
     }
