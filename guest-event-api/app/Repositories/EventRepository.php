@@ -85,7 +85,9 @@ class EventRepository
      */
     public function getListByPagination(array $constraints, $n = 30)
     {
-        return $this->event->where($constraints)->paginate($n);
+        return $this->event->where($constraints)
+        ->orderBy('created_at', 'desc')
+        ->paginate($n);
     }
 
     /**
